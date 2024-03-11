@@ -24,8 +24,31 @@ class Solution:
         #         return i
 
         # brute force: xor
-        ans = 0
-        for i in nums:
-            ans = ans ^ i
+        # ans = 0
+        # for i in nums:
+        #     ans = ans ^ i
 
-        return ans
+        # return ans
+
+
+        # using binary search
+        left, right = 0, len(nums)-1
+        
+        while left <= right:
+            if left == right:
+                return nums[left]
+            mid = (left + right)//2
+            if mid % 2 == 0:
+                if nums[mid] == nums[mid-1]:
+                    right = mid - 1
+                elif nums[mid] == nums[mid+1]:
+                    left = mid + 1
+                else:
+                     return nums[mid]
+            else:
+                if nums[mid] == nums[mid + 1]:
+                    right = mid - 1
+                elif nums[mid] == nums[mid - 1]:
+                    left = mid + 1
+                else:
+                     return nums[mid]
