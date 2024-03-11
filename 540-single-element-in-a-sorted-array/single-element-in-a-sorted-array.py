@@ -16,9 +16,16 @@ class Solution:
         # return ele
 
         # brute force 2: hash map
-        h_map = {}
+        # h_map = {}
+        # for i in nums:
+        #     h_map[i] =h_map.get(i,0)+1
+        # for i in h_map:
+        #     if h_map[i] == 1:
+        #         return i
+
+        # brute force: xor
+        ans = 0
         for i in nums:
-            h_map[i] =h_map.get(i,0)+1
-        for i in h_map:
-            if h_map[i] == 1:
-                return i
+            ans = ans ^ i
+
+        return ans
